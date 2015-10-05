@@ -1,0 +1,40 @@
+<div class="site-wrapper-inner" ng-show="sites.length > 0">
+    <div class="cover-container">
+        <div class="inner">
+            <div class="content">
+                <h2>Parsed sites:</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Domain</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="site in sites">
+                            <td>
+                                <div ng-switch="site.status">
+                                    <div ng-switch-when="PARSED"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                                    <div ng-switch-when="IN_PROGRESS"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></div>
+                                    <div ng-switch-when="NOT_PARSED"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                                </div>
+                            </td>
+                            <td>{{site.domain}}</td>
+                            <td><a href="#/details/{{site.id}}">Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-wrapper-inner-vertical" ng-hide="sites.length > 0">
+    <div class="cover-container">
+        <div class="inner">
+            <div>
+                <h1>No one still didn't parsed any site ;(</h1>
+            </div>
+        </div>
+    </div>
+</div>

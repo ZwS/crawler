@@ -1,0 +1,4 @@
+target/
+deployments/*.war
+*.iml
+.idea

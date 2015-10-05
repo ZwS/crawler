@@ -1,0 +1,63 @@
+<div class="site-wrapper-inner" ng-show="site">
+    <div class="cover-container">
+        <div class="inner">
+            <div class="content">
+                <div ng-if="site.status == 'PARSED' || site.status == 'NOT_PARSED'">
+                    <button class="btn btn-danger pull-right" type="button" ng-click="delete()">Delete</button>
+                </div>
+                <h1>{{site.domain}}</h1>
+                <div ng-switch="site.status">
+                    <div ng-switch-when="PARSED">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Parsed
+                        <button class="btn btn-default" type="button" ng-click="parse()">Parse again</button>
+                    </div>
+                    <div ng-switch-when="IN_PROGRESS">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>In Progress
+                        <button class="btn btn-default" type="button" ng-click="refresh()">Refresh</button>
+                    </div>
+                    <div ng-switch-when="NOT_PARSED">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Not Parsed
+                        <button class="btn btn-default" type="button" ng-click="parse()">Parse again</button>
+                    </div>
+                </div>
+                <div ng-show="stats">
+                    <p>Total parsed links: {{stats.total}}</p>
+                    <P>Total external links: {{stats.externals}}</P>
+                </div>
+                <table class="table" ng-show="links">
+                    <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Depth</th>
+                        <th>URL</th>
+                        <th>External links</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="link in links">
+                        <td>
+                            <div ng-switch="link.status">
+                                <div ng-switch-when="PARSED"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                                <div ng-switch-when="IN_PROGRESS"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></div>
+                                <div ng-switch-when="NOT_PARSED"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                            </div>
+                        </td>
+                        <td>{{link.depth}}</td>
+                        <td><a href="{{link.url}}">{{link.url}}</a></td>
+                        <td>{{link.externals}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-wrapper-inner-vertical" ng-hide="site">
+    <div class="cover-container">
+        <div class="inner">
+            <div>
+                <h1>We don't have this site in our database. Where did you get this link?</h1>
+            </div>
+        </div>
+    </div>
+</div>

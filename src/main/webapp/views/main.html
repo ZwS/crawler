@@ -1,0 +1,32 @@
+<div class="site-wrapper-inner-vertical">
+    <div class="cover-container">
+        <div class="inner">
+            <h1>Enter domain you want to parse:</h1>
+
+            <form ng-submit="parse(domain)">
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="addon">http://</span>
+                            <input type="text" class="form-control" placeholder="Enter domain..." aria-describedby="addon" required ng-model="domain" ng-change="changed()">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" ng-model="input">Parse!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="alert alert-danger" role="alert" ng-show="isError">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                String you entered isn't a valid domain.
+            </div>
+            <div class="alert alert-success" role="alert" ng-show="isSuccess">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span class="sr-only">Success:</span>
+                Domain {{parsed_domain}} was successfuly was added to queue.
+            </div>
+        </div>
+    </div>
+</div>
