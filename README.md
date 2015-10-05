@@ -6,10 +6,12 @@ This is simple web crawler that collects information about given domain.
 ## Statement of work:
 Develop service that collecting information about links on pages of given site. As initial parameter domain is given. Service should scan site by reading main page and navigating across html links to inner pages. On each page of site external links should be counted.
 As result of service work should be a table with next fields:
+
 1. Page URL
 2. Nesting level
 3. Number of external links
 4. Overall domain information
+
 Results should be saved to database. All not specified details could be realized at your choice.
 
 ## Realization information
